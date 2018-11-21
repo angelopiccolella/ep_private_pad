@@ -1,0 +1,64 @@
+<div id="homepage-button">
+    <li data-type="button">
+    <a class="grouped-left" title="Homepage" aria-label="Homepage">
+    <button onClick='go2Home()' style="width:max-content; font-size:18px" class="buttonicon" title="Homepage" aria-label="Homepage" data-l10n-id="go-to-home">
+    </button>
+    </a>
+    </li>
+    <li class="separator">
+    </li>
+</div>
+
+<script>
+    var role = getCookie('role');
+    var padPrivacy= getCookie('padPrivacy');
+    var username = getCookie('username');
+
+    if(username){
+        document.getElementById('homepage-button').style.display = "block";
+    } else {
+        document.getElementById('homepage-button').style.display = "none";
+    }
+
+    var divs = document.getElementsByClassName('menu_left');
+    if(role == 'read'){
+        for(var i = 0; i < divs.length; i++){
+            divs[0].style.visibility='hidden';
+        }
+        document.getElementById('homepage-button').style.visibility='visible';
+    } else {
+        for(var i = 0; i < divs.length; i++){
+            divs[0].style.visibility='visible';
+        }
+    }
+
+    function go2Home() {
+        window.location = "../homepage";
+    }
+    
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);   
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    //var pad = window.location.href.split('/').pop().split('?')[0];
+    
+    //console.log("Utente in sessione letto dal pad: " + usernameInSession + ", pad: " + pad);
+</script>

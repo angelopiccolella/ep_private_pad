@@ -1,0 +1,179 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    color: #333;
+    font: 20px helvetica, sans-serif;
+    background: #ddd;
+    background: -webkit-radial-gradient(circle, #aaa, #eee 60%) center fixed;
+    background: -moz-radial-gradient(circle, #aaa, #eee 60%) center fixed;
+    background: -ms-radial-gradient(circle, #aaa, #eee 60%) center fixed;
+    background: -o-radial-gradient(circle, #aaa, #eee 60%) center fixed;
+}
+
+input[type=text] {
+    margin: 3px 10px 3px 0px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    line-height: 20px;
+    /* IE8 hack */
+    padding: 0px 45px 0 10px;
+    *padding: 0;
+    /* IE7 hack */
+    border: 1px solid black;
+    background-color: #fff;
+}
+
+input[type=text]:focus {
+    border-color: #000;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+button, input[type=button], input[type=submit] {
+    text-align: center;
+    margin: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: -webkit-linear-gradient(#5F5F5F, #565656 50%, #4C4C4C 51%, #373737);
+    color: white;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.9);
+    border: none;
+}
+
+#go-to-pad-button, #homepage-button {
+    font-size: 20px;
+    padding: 3px 10px 3px 10px;
+}
+
+#changeRole, #addUser, #updateRole, #showButton, #hideButton, #hideChangeRoleDiv {
+    font-size: 18px;
+    padding: 3px 10px 3px 10px;
+}
+
+#addUserDiv, #changeRoleDiv{
+    text-align: center;
+}
+
+#wrapper {
+    border-top: 1px solid #999;
+    padding: 15px;
+    background: #eee;
+    background: -webkit-linear-gradient(#fff, #ccc);
+    background: -moz-linear-gradient(#fff, #ccc);
+    background: -ms-linear-gradient(#fff, #ccc);
+    background: -o-linear-gradient(#fff, #ccc);
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+#inner {
+    display: table;
+    width: 1000px;
+    height: 100%;
+    min-width: 1000px;
+    min-height: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+#colrow {
+    display: table-row;
+    height: 100%;
+}
+
+#left {
+    display: table-cell;
+    float: left;
+    text-align: center;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+hr {
+    border: none;
+    height: 20px;
+    width: 100%;
+    height: 50px;
+    border-bottom: 1px solid #999;
+    box-shadow: 0 10px 10px -10px #333;
+    margin: -30px auto 10px;
+}
+
+#right {
+    display: table-cell;
+    float: right;
+    text-align: center;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+#center {
+    position: relative;
+    padding: 10px;
+    margin-top: 10px;
+    margin: 0 auto;
+    display: block;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+    color: #333;
+}
+
+.username {
+    font-size: 18px;
+}
+
+li {
+    list-style-type: none;
+}
+
+select {
+    font-size: 18px;
+    margin-top: 3px;
+}
+
+#title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+#subtitle {
+    font-weight: bold;
+}
+
+.padname {
+    display: block;
+    margin: 0 auto;
+}
+
+.create {
+    text-align: center;
+    font-size: 25px;
+    margin: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background: -webkit-linear-gradient(#5F5F5F, #565656 50%, #4C4C4C 51%, #373737);
+    color: white;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.9);
+    border: none;
+    padding: 6px 10px 6px 10px;
+}
+
+.error-message {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0px;
+}

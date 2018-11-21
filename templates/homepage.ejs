@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../../../static/plugins/ep_private_pad/static/homepage.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="localizations" type="application/l10n+json" href="../locales.json" />
+    <script type="text/javascript" src="../static/js/html10n.js"></script>
+    <script type="text/javascript" src="../static/js/l10n.js"></script>
+    <title><%=username%> - Homepage</title>
+</head>
+
+<body>
+
+    <header>
+
+    </header>
+
+    <main>
+        <div>
+            <p id="title" data-l10n-id="homepage.welcome" data-l10n-args='{"username": "<%=username%>" }'></p>            
+            <div id="wrapper">
+                <div id="inner">
+                    <div id="colrow">
+                        <div id="left">
+                            <% if(mypads!=''){%>
+                                <p id="subtitle" data-l10n-id="homepage.admin-document"></p>
+                                <table width="400px" align="center">
+                                    <% mypads.forEach(function(pad) { %>
+                                        <tr>
+                                            <td width="75%"><a class="padtitle" href="/p/<%=pad%>"><%=pad%></a></td>
+                                            <td width="25%"><a href="/manage/<%=pad%>"><i class="material-icons" style="font-size:30px">&#xe8b8;</i></a></td>
+                                        </tr>
+                                    <% }); %>
+                                </table>
+                            <%} else {%>
+                                <p id="subtitle" data-l10n-id="homepage.not-found-admin-document"></p>
+                            <%}%> 
+                        </div>
+                        <div id="right">
+                            <% if(pads!=''){%>
+                                <p id="subtitle" data-l10n-id="homepage.other-document"></p>
+                                <table width="400px" align="center">
+                                    <% for(i=0;i<pads.length;i++) { %>
+                                    <tr>
+                                        <td width="75%" style="padding:15px;"><a class="padtitle" href="/p/<%=pads[i]%>"><%=pads[i]%></a></td>
+                                        <td width="25%" style="padding:15px;"><i class="fas fa-book"></i>  <%if(role[i]=='write'){%><i class="fas fa-pen"></i><%}%></td>
+                                    </tr>
+                                    <% } %>
+                                </table>
+                            <%} else {%>
+                            <p id="subtitle" data-l10n-id="homepage.not-found-other-document"></p>
+                            <%}%>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="center">
+                        <form action="createPad" id="createPad" onsubmit=" return go2Check()" method="POST">
+                            <input onchange="verify()" class="padname" type="text" id="padname" name="padname" maxlength="50" autofocus x-webkit-speech>
+                            <span class="alert" id="alert-message" style="display:none;" data-l10n-id="homepage.null-value-error"></span>
+                            <button id="createButton" class="create" type="submit" data-l10n-id="homepage.create-document"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <form action="logout" method="POST">
+                <button class="logout" type="submit" data-l10n-id="homepage.logout"></button>
+            </form>
+
+            <script>
+                function go2Check() {
+                    var padname = document.getElementById("padname").value.trim();
+                    if(padname.length === 0 || padname==''){
+                        document.getElementById("alert-message").style.display="block";               
+                        return false;
+                    }else{
+                        padname.length > 0 ? window.location = "checkpad/" + padname : alert("Please enter a name")   
+                    }
+                }
+                
+                function verify(){
+                    if(pad.length === 0){
+                        document.getElementById("alert-message").style.display="block";
+                        document.getElementById("createButton").disabled = true;
+                    }else{
+                        document.getElementById("alert-message").style.display="none";
+                        document.getElementById("createButton").disabled = false;
+                    }
+                }
+            </script>
+        </div>
+    </main>
+    <footer>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+{
+    "parts": [
+        {
+            "name": "login",
+            "hooks": {
+                "eejsBlock_indexWrapper": "ep_private_pad/index:indexWrapper",
+                "expressCreateServer": "ep_private_pad/index:expressCreateServer",
+                "eejsBlock_editbarMenuLeft": "ep_private_pad/pad:editbarMenuLeft",
+                "eejsBlock_editbarMenuRight": "ep_private_pad/pad:editbarMenuRight",
+                "eejsBlock_loading": "ep_private_pad/pad:loading",
+                "eejsBlock_body": "ep_private_pad/pad:body"
+            }
+        }
+    ]
+}

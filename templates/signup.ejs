@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<link rel="stylesheet" href="../../../static/plugins/ep_private_pad/static/signup.css" type="text/css" />
+<link rel="localizations" type="application/l10n+json" href="../locales.json" />
+<script type="text/javascript" src="../static/js/html10n.js"></script>
+<script type="text/javascript" src="../static/js/l10n.js"></script>
+<title>Sign up</title>
+</head>
+
+<body>
+
+    <header>
+    </header>
+
+    <main>
+        <div id="wrapper">
+            <div id="inner">
+                <% if(signupError!=''){%>
+                    <p style="text-align: center;font-weight:bold;font-size: 18px;" data-l10n-id="<%=signupError%>"></p>
+                <%}%>
+                <form onsubmit="return validateForm()" action="signup" method="post" name="signup-form" id="signup-form">
+                    <div class="row">
+                        <div class="col-25">
+                            <label id="labelUsername" for="username" data-l10n-id="signup.username"></label>
+                        </div>
+                        <div class="col-75">
+                            <input name="username" type="text" id="username" maxlength="50" autofocus x-webkit-speech>
+                            <span class="error-message" id="username_error" data-l10n-id="signup.user-error" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label id="labelEmail" for="email" data-l10n-id="signup.email"></label>
+                        </div>
+                        <div class="col-75">
+                            <input name="email" type="text" id="email" maxlength="50" autofocus x-webkit-speech>
+                            <span class="error-message" id="email_error" data-l10n-id="signup.email-error" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label id="labelPassword" for="password" data-l10n-id="signup.password"></label>
+                        </div>
+                        <div class="col-75">
+                            <input name="password" type="password" id="password" maxlength="50" autofocus x-webkit-speech>
+                            <span class="error-message" id="password_error" data-l10n-id="signup.password-error" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-25">
+                            <label id="labelConfirmPassword" for="confirmPassword" data-l10n-id="signup.retype-password"></label>
+                        </div>
+                        <div class="col-75">
+                            <input name="confirmPassword" type="password" id="confirmPassword" maxlength="50" autofocus x-webkit-speech>
+                            <span class="error-message" id="confirmPassword_error" data-l10n-id="signup.confirm-password-error" style="display:none;"></span>
+                        </div>
+                    </div>
+                    <button class="signup" type="submit" data-l10n-id="signup.signup"></button>
+                </form>
+            </div>
+        </div>
+
+
+        <script>
+
+            function validateForm (){
+                document.getElementById("username").onkeyup = removeWarning;
+                document.getElementById("password").onkeyup = removeWarning;
+                document.getElementById("email").onkeyup = removeWarning;
+                document.getElementById("confirmPassword").onkeyup = removeWarning;
+                var submit = true;    
+                var username = document.getElementById("username").value.trim();
+                var email = document.getElementById("email").value.trim();
+                var password = document.getElementById("password").value.trim();
+                var confirmPassword = document.getElementById("confirmPassword").value;
+                
+                if(username == null || username == "" || username.length < 3){
+                    document.getElementById('username_error').style.display="inline";
+                    submit = false;
+                }
+                if(!validateEmail(email)){
+                    document.getElementById('email_error').style.display="inline";
+                    submit = false;
+                }
+                if(password == null || password == "" || password.length < 5){
+                    document.getElementById('password_error').style.display="inline";
+                    submit = false;
+                }
+                if(password!=confirmPassword && password.length>=5){
+                    document.getElementById('confirmPassword_error').style.display="inline";
+                    submit = false;
+                }
+                return submit;
+            }
+
+            function removeWarning() {
+                document.getElementById(this.id + "_error").style.display = "none";
+            }
+
+            function validateEmail(email) {
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+            
+            
+        </script>
+    </main>
+    <footer>
+    </footer>
+
+</body>
+
+</html>

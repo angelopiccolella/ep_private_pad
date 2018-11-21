@@ -1,0 +1,26 @@
+{
+  "name": "ep_private_pad",
+  "version": "1.0.0",
+  "description": "Signup and login to manage private pad, share your pad with other users, add roles to users for your pads.",
+  "author": "Angelo Piccolella",
+  "license": "",
+  "dependencies": {
+    "client-sessions": "^0.8.0",
+    "cookie-parser": "^1.4.3",
+    "eejs": "^1.0.0",
+    "ejs": "^1.0.0",
+    "etherpad-lite-client": "^0.8.0",
+    "express": "^4.6.1",
+    "express-session": "^1.15.6",
+    "mysql": "^2.16.0",
+    "node-gyp": "^3.8.0",
+    "password-hash": "^1.2.2",
+    "utils": "^0.3.1"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "devDependencies": {
+    "gulp-sass": "^4.0.2"
+  }
+}

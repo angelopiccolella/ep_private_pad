@@ -1,0 +1,53 @@
+<span id="manage-button">
+    <li data-type="button">
+    <a class="grouped-left" title="Manage" aria-label="Manage">
+    <button id="button2manage" onClick="go2Manage()" style="width:max-content; font-size:18px" class="buttonicon" title="Manage" aria-label="Manage" data-l10n-id="pad-manage-role">
+    </button>
+    </a>
+    </li>
+    <li class="separator">
+    </li>
+</span>
+
+<script>
+    function go2Manage() {
+        window.location = "../manage/"+window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+    }
+    
+    var role = getCookie('role');
+    var padPrivacy= getCookie('padPrivacy');
+    var username = getCookie('username');
+    var isPublic = getCookie('isPublic');
+
+    if(role=='admin'){
+        document.getElementById('button2manage').setAttribute("data-l10n-id","pad-manage-role");
+    } else if(role=='read'){
+        document.getElementById('button2manage').setAttribute("data-l10n-id","manage.read-only");
+        document.getElementById('button2manage').disabled = true;
+    } else if(role!='admin' || isPublic=='true'){
+        document.getElementById('manage-button').style.display = "none";
+    }
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);   
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+</script>
